@@ -16,7 +16,7 @@ a{color:var(--accent)}
 .ico.big{width:26px;height:26px;color:var(--accent)}
 
 /* ---------- Hero ---------- */
-.hero{text-align:center;padding:48px 0 40px;position:relative;overflow:hidden;
+.hero{text-align:center;padding:48px 0 12px;position:relative;overflow:hidden;
   background:
     radial-gradient(ellipse 60% 45% at 50% 30%, rgba(226,167,92,.16), transparent 70%),
     linear-gradient(180deg, #000 0%, var(--bg) 100%);}
@@ -31,7 +31,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.1rem,7.5vw,3.3rem)
 h1 em{font-style:italic;color:var(--accent)}
 .epitaph{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--text);margin:0 0 10px;opacity:.9}
 .sub{color:var(--muted);margin:0 auto 22px;max-width:500px}
-.chips{list-style:none;padding:0;margin:0 0 26px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.chips{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .chips li{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid var(--line);
   border-radius:999px;padding:5px 12px;font-size:.88rem;color:var(--text)}
 .chips .ico{color:var(--accent)}
@@ -50,6 +50,7 @@ h1 em{font-style:italic;color:var(--accent)}
 
 /* ---------- Seções ---------- */
 main section{margin-top:56px}
+main section:first-child{margin-top:32px}
 h2{font-family:var(--serif);font-weight:400;font-size:1.65rem;margin:0 0 18px;line-height:1.2}
 h2::after{content:"";display:block;width:36px;height:2px;background:var(--accent);margin-top:10px;opacity:.8}
 .center{text-align:center}
