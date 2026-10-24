@@ -38,7 +38,7 @@ if (demo) $("demoNote").hidden = false;
 
 function render(){
   $("count").textContent = count.toLocaleString("pt-BR");
-  $("countLabel").textContent = count === 1 ? "pessoa confirmou presença" : "pessoas confirmaram presença";
+  $("countLabel").textContent = count === 1 ? "pessoa confirmou presença nos atos" : "pessoas confirmaram presença nos atos";
   const done = jaConfirmou();
   $("goBtn").innerHTML = done ? '<svg class="ico"><use href="#i-check"/></svg> Presença confirmada' : "Eu vou";
   $("goBtn").classList.toggle("done", done);
