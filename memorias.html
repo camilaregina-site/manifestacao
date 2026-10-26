@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memórias de Camila Regina</title>
+<meta name="description" content="Fotos e lembranças de quem conviveu com Camila Regina, gata comunitária da Ponta Verde. Compartilhe a sua.">
+<meta property="og:title" content="Memórias de Camila Regina">
+<meta property="og:description" content="Fotos e lembranças de quem conviveu com ela. Compartilhe a sua.">
+<meta property="og:image" content="https://camilaregina-site.github.io/manifestacao/card-ato.png">
+<meta name="theme-color" content="#0d0c0b">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-ribbon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5c-2.2 0-3.9 1.8-3.9 4 0 1.8 1 3.7 2.3 5.8L5.6 21.5h3.3L12 15.6l3.1 5.9h3.3l-4.8-9.2c1.3-2.1 2.3-4 2.3-5.8 0-2.2-1.7-4-3.9-4zm0 2.2c1 0 1.7.8 1.7 1.8 0 1-.7 2.4-1.7 4-1-1.6-1.7-3-1.7-4 0-1 .7-1.8 1.7-1.8z"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7.5 6.5H4a2 2 0 0 0-2 2V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8.5a2 2 0 0 0-2-2h-3.5z"/><circle cx="12" cy="13" r="3.5"/></g></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M18 6 6 18M6 6l12 12"/></symbol>
+</svg>
+
+<header class="hero hero-small">
+  <div class="wrap">
+    <p class="back"><a href="./">← Voltar para a página do ato</a></p>
+    <p class="kicker"><svg class="ico ribbon"><use href="#i-ribbon"/></svg> Justiça por Camila Regina</p>
+    <h1>Memórias de<br><em>Camila Regina</em></h1>
+    <p class="sub">Ela era de todos. Aqui guardamos as fotos e lembranças de quem conviveu com ela na Ponta Verde.</p>
+    <a class="btn primary" href="#enviar"><svg class="ico"><use href="#i-camera"/></svg> Compartilhar uma memória</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section aria-labelledby="galeria-t">
+  <h2 id="galeria-t">Lembranças</h2>
+  <div id="galeria" class="gallery" aria-live="polite"></div>
+  <p id="galeriaVazia" class="empty" hidden>Ainda não há memórias publicadas. Que tal ser a primeira pessoa a compartilhar?</p>
+  <p id="galeriaErro" class="empty" hidden>Não foi possível carregar as memórias agora. Tente recarregar a página.</p>
+</section>
+
+<section id="enviar" aria-labelledby="enviar-t">
+  <h2 id="enviar-t">Compartilhe uma memória</h2>
+  <div class="card">
+    <p class="mt0">Você conviveu com a Camila? Conte como era ela e, se tiver, envie uma foto. <strong>Todos os envios passam pela organização antes de aparecer aqui.</strong></p>
+
+    <form id="memForm" novalidate>
+      <label class="field">
+        <span>Seu relato <small>(obrigatório)</small></span>
+        <textarea id="texto" maxlength="800" rows="5" required placeholder="Ex.: Toda manhã ela me esperava na porta…"></textarea>
+        <small class="counter"><span id="textoCount">0</span>/800</small>
+      </label>
+
+      <label class="field">
+        <span>Seu nome ou apelido <small>(opcional, aparece junto ao relato)</small></span>
+        <input id="nome" type="text" maxlength="40" autocomplete="off">
+      </label>
+
+      <div class="field">
+        <span>Foto da Camila <small>(opcional)</small></span>
+        <label class="file-drop" id="fileDrop">
+          <input id="foto" type="file" accept="image/*">
+          <span id="fileLabel"><svg class="ico"><use href="#i-camera"/></svg> Escolher foto</span>
+          <img id="fotoPreview" alt="" hidden>
+        </label>
+        <button type="button" class="linkbtn" id="fotoRemove" hidden>Remover foto</button>
+      </div>
+
+      <!-- campo invisível contra robôs -->
+      <input type="text" id="site" name="site" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+
+      <label class="consent">
+        <input id="consent" type="checkbox">
+        <span>Autorizo a publicação deste relato e da foto nesta página. Declaro que a foto é minha, não mostra o rosto de outras pessoas nem cenas de violência, e que o texto é uma lembrança pessoal, sem acusações nem nomes de terceiros.</span>
+      </label>
+
+      <p id="formMsg" class="form-msg" role="status" hidden></p>
+      <button class="btn primary go" id="sendBtn" type="submit">Enviar memória</button>
+    </form>
+  </div>
+
+  <ul class="rules small-print">
+    <li>Não publicamos ofensas, acusações, nomes ou fotos de suspeitos, nem imagens das agressões.</li>
+    <li>Guardamos apenas o que você enviar (relato, nome opcional e foto). Não registramos e-mail, telefone nem localização.</li>
+    <li>Quer retirar uma memória que você enviou? Peça no <a data-group href="#" target="_blank" rel="noopener">grupo do ato no WhatsApp</a>.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg class="ico ribbon" aria-hidden="true"><use href="#i-ribbon"/></svg>
+    <p>Organização: <strong>Justiça por Camila Regina</strong>, um grupo independente de pessoas que defendem os direitos dos animais.</p>
+    <p><a href="./">Página do ato</a></p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="memorias.js"></script>
+</body>
+</html>

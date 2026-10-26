@@ -144,6 +144,45 @@ ul.rules li::marker{color:var(--accent)}
 
 .denounce{display:flex;gap:14px;align-items:flex-start}
 
+/* Memórias */
+.gallery{columns:2 260px;column-gap:14px}
+.gallery-preview:empty{display:none}
+.gallery-preview{margin-bottom:18px}
+.mem{break-inside:avoid;margin:0 0 14px;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.mem img{display:block;width:100%;height:auto;background:#222}
+.mem figcaption{padding:16px 18px}
+.mem blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:1.05rem;line-height:1.55;white-space:pre-line;overflow-wrap:anywhere}
+.mem .who{margin:10px 0 0;color:var(--accent);font-size:.85rem;font-weight:700}
+.empty{color:var(--muted);text-align:center;padding:24px 0}
+.hero-small{padding:28px 0 36px}
+.hero-small h1{margin-top:6px}
+.hero-small .sub{margin-bottom:22px}
+.back{text-align:left;margin:0 0 24px;font-size:.92rem}
+.back a{color:var(--muted);text-decoration:none}
+.back a:hover{color:var(--accent)}
+
+/* Formulário */
+.field{display:block;margin:0 0 18px}
+.field > span{display:block;font-weight:700;margin-bottom:6px}
+.field > span small{font-weight:400;color:var(--muted)}
+.field input[type=text],.field textarea{width:100%;font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.field textarea{resize:vertical;min-height:120px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.counter{display:block;text-align:right;color:var(--faint);font-size:.8rem;margin-top:4px}
+.file-drop{display:flex;align-items:center;justify-content:center;min-height:120px;border:2px dashed var(--line);border-radius:14px;cursor:pointer;color:var(--muted);overflow:hidden;position:relative}
+.file-drop:hover{border-color:var(--accent);color:var(--text)}
+.file-drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.file-drop span{display:inline-flex;align-items:center;gap:8px;font-weight:700}
+.file-drop img{max-height:260px;max-width:100%;display:block}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;color:var(--muted);margin:6px 0 18px;cursor:pointer}
+.consent input{margin-top:4px;width:18px;height:18px;accent-color:var(--accent);flex:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form-msg{border-radius:12px;padding:12px 14px;margin:0 0 16px;font-size:.95rem}
+.form-msg.ok{background:rgba(134,197,138,.12);border:1px solid rgba(134,197,138,.4);color:#cfe9d0}
+.form-msg.err{background:rgba(240,199,94,.1);border:1px solid rgba(240,199,94,.4);color:var(--warn)}
+#memForm .go{max-width:none}
+.small-print{font-size:.85rem;color:var(--muted);margin-top:16px}
+
 /* Rodapé */
 footer{margin-top:64px;padding:32px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;text-align:center;background:#000}
 footer .ribbon{width:22px;height:22px;opacity:.8}

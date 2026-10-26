@@ -74,3 +74,21 @@ $("undoBtn").addEventListener("click", async () => {
 });
 
 load();
+
+// Prévia das memórias aprovadas (até 3)
+(async () => {
+  const box = $("memPreview");
+  if (!box || !CONFIG.SCRIPT_URL) return;
+  try {
+    const r = await fetch(CONFIG.SCRIPT_URL + "?action=memorias&t=" + Date.now());
+    const j = await r.json();
+    (j.items || []).slice(0, 3).forEach(m => {
+      const fig = document.createElement("figure"); fig.className = "mem";
+      if (m.foto) { const img = document.createElement("img"); img.src = m.foto; img.loading = "lazy"; img.alt = "Foto de Camila Regina"; img.referrerPolicy = "no-referrer"; img.onerror = () => img.remove(); fig.appendChild(img); }
+      const cap = document.createElement("figcaption");
+      const q = document.createElement("blockquote"); q.textContent = m.texto.length > 220 ? m.texto.slice(0, 220) + "…" : m.texto;
+      const who = document.createElement("p"); who.className = "who"; who.textContent = m.nome || "Anônimo";
+      cap.append(q, who); fig.appendChild(cap); box.appendChild(fig);
+    });
+  } catch {}
+})();
