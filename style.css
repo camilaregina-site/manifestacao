@@ -68,6 +68,21 @@ h2::after{content:"";display:block;width:36px;height:2px;background:var(--accent
 .tbc{color:var(--warn)}
 @media (max-width:520px){.info-grid{grid-template-columns:1fr}}
 
+/* Eventos */
+.event{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:12px}
+.main-event{border-color:rgba(226,167,92,.45);background:linear-gradient(180deg,rgba(226,167,92,.08),var(--card) 60%)}
+.event-date{font-size:1.35rem;margin:10px 0 2px}
+.event-date strong{color:var(--accent)}
+.event-sub{margin:0 0 6px;color:var(--muted)}
+.route{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:14px}
+.route li{display:flex;gap:14px;align-items:flex-start;padding-top:14px;border-top:1px solid var(--line)}
+.route strong{display:block;font-size:1.05rem}
+.route small{display:block;color:var(--muted);font-size:.9rem;margin-top:2px}
+.route a{display:inline-block;margin-top:6px;font-size:.92rem}
+.small-event{display:flex;gap:12px;align-items:baseline;padding:14px 18px}
+.tag-muted{color:var(--muted);background:rgba(255,255,255,.05);border-color:var(--line);flex:none}
+.bring{margin-top:0}
+
 /* Contador */
 .rsvp{position:relative;text-align:center;background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:36px 20px;overflow:hidden}
 .rsvp h2::after{margin-left:auto;margin-right:auto}

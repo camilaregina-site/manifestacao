@@ -1,16 +1,12 @@
 const $ = (id) => document.getElementById(id);
 const KEY = "camila-regina-eu-vou";
-const fill = (name, html) => document.querySelectorAll('[data-fill="' + name + '"]').forEach(el => el.innerHTML = html);
 
-// Data e horário (a confirmar ou definidos)
-fill("data", CONFIG.DATA ? CONFIG.DATA
-  : '<span class="tbc">A confirmar</span><small>' + CONFIG.DATA_PREVISTA + '</small>');
-fill("horario", CONFIG.HORARIO ? CONFIG.HORARIO
-  : '<span class="tbc">A confirmar</span><small>' + CONFIG.HORARIO_PREVISTO + '</small>');
-fill("data-curta", CONFIG.DATA ? CONFIG.DATA_CURTA + (CONFIG.HORARIO ? " · " + CONFIG.HORARIO : "") : CONFIG.DATA_CURTA + " (a confirmar)");
-fill("data-curta-tl", CONFIG.DATA ? CONFIG.DATA_CURTA : CONFIG.DATA_CURTA + " (previsão)");
+// Esconde avisos com data de validade vencida (ex.: o ato de hoje)
+document.querySelectorAll("[data-until]").forEach(el => {
+  if (Date.now() > new Date(el.dataset.until).getTime()) el.remove();
+});
 
-$("maplink").href = CONFIG.MAPA;
+document.querySelectorAll(".maplink").forEach(a => a.href = CONFIG.MAPA);
 document.querySelectorAll("[data-group]").forEach(a => a.href = CONFIG.GRUPO_WHATSAPP);
 
 // Compartilhar
