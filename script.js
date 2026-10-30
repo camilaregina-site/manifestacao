@@ -1,17 +1,11 @@
 const $ = (id) => document.getElementById(id);
-const KEY = "camila-regina-eu-vou";
 
-// Esconde avisos com data de validade vencida (ex.: o ato de hoje)
-document.querySelectorAll("[data-until]").forEach(el => {
-  if (Date.now() > new Date(el.dataset.until).getTime()) el.remove();
-});
-
-document.querySelectorAll(".maplink").forEach(a => a.href = CONFIG.MAPA);
 document.querySelectorAll("[data-group]").forEach(a => a.href = CONFIG.GRUPO_WHATSAPP);
 
 // Compartilhar
 const pageUrl = location.href.split("#")[0];
 $("waShare").href = "https://wa.me/?text=" + encodeURIComponent(CONFIG.TEXTO_COMPARTILHAR + " " + pageUrl);
+$("regShare").href = "https://wa.me/?text=" + encodeURIComponent(CONFIG.TEXTO_REGINALDO + " " + pageUrl + "#reginaldo");
 $("copyBtn").addEventListener("click", async () => {
   const label = $("copyBtn").querySelector("span");
   try { await navigator.clipboard.writeText(pageUrl); label.textContent = "Link copiado"; setTimeout(() => label.textContent = "Copiar link", 2500); }
@@ -24,56 +18,29 @@ const io = "IntersectionObserver" in window ? new IntersectionObserver((entries)
 }, { threshold: 0.12 }) : null;
 document.querySelectorAll(".reveal").forEach(el => io ? io.observe(el) : el.classList.add("in"));
 
-// Contador "Eu vou"
-function jaConfirmou(){ try { return localStorage.getItem(KEY) === "1"; } catch { return false; } }
-function marcar(v){ try { v ? localStorage.setItem(KEY,"1") : localStorage.removeItem(KEY); } catch {} }
-
-let count = 0;
-const demo = !CONFIG.SCRIPT_URL;
-if (demo) $("demoNote").hidden = false;
-
-function render(){
-  $("count").textContent = count.toLocaleString("pt-BR");
-  $("countLabel").textContent = count === 1 ? "pessoa confirmou presença nos atos" : "pessoas confirmaram presença nos atos";
-  const done = jaConfirmou();
-  $("goBtn").innerHTML = done ? '<svg class="ico"><use href="#i-check"/></svg> Presença confirmada' : "Eu vou";
-  $("goBtn").classList.toggle("done", done);
-  $("goBtn").disabled = done;
-  $("undoBtn").hidden = !done;
-}
-
-async function call(action){
-  if (demo) {
-    if (action === "add") count++;
-    if (action === "remove") count = Math.max(0, count - 1);
-    return count;
-  }
-  const r = await fetch(CONFIG.SCRIPT_URL + "?action=" + action + "&t=" + Date.now());
-  const j = await r.json();
-  if (!j.ok) throw new Error("erro");
-  return j.count;
-}
-
-async function load(){
-  render();
-  $("count").textContent = "–";
-  try { count = await call("count"); render(); } catch {}
-}
-
-$("goBtn").addEventListener("click", async () => {
-  if (jaConfirmou()) return;
-  $("goBtn").disabled = true; $("goBtn").textContent = "Confirmando…";
-  try { count = await call("add"); marcar(true); }
-  catch { alert("Não foi possível confirmar agora. Tente de novo em instantes."); }
-  render();
-});
-
-$("undoBtn").addEventListener("click", async () => {
-  try { count = await call("remove"); marcar(false); } catch {}
-  render();
-});
-
-load();
+// Prévia da galeria do ato (até 6 itens)
+(function () {
+  const itens = typeof GALERIA_ATO !== "undefined" ? GALERIA_ATO : [];
+  if (!itens.length) return;
+  const box = $("atoPreview");
+  const MAX = 6;
+  itens.slice(0, MAX).forEach((m, i) => {
+    const a = document.createElement("a");
+    a.className = "tile"; a.href = "galeria.html#item-" + (i + 1);
+    a.setAttribute("aria-label", (m.tipo === "video" ? "Abrir vídeo " : "Abrir foto ") + (i + 1) + " do ato");
+    const src = m.tipo === "video" ? m.poster : (m.thumb || m.src);
+    if (src) { const img = document.createElement("img"); img.src = src; img.alt = m.legenda || ""; img.loading = "lazy"; a.appendChild(img); }
+    if (m.tipo === "video") {
+      const p = document.createElement("span"); p.className = "play";
+      p.innerHTML = '<svg class="ico"><use href="#i-play"/></svg>'; a.appendChild(p);
+    }
+    if (i === MAX - 1 && itens.length > MAX) {
+      const more = document.createElement("span"); more.className = "more"; more.textContent = "+" + (itens.length - MAX); a.appendChild(more);
+    }
+    box.appendChild(a);
+  });
+  box.hidden = false; $("atoCta").hidden = false; $("atoVazio").hidden = true;
+})();
 
 // Prévia das memórias aprovadas (até 3)
 (async () => {

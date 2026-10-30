@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galeria do grande ato · Justiça por Camila Regina</title>
+<meta name="description" content="Fotos e vídeos do grande ato de 29/10, em memória da gata Camila Regina e por todos os animais.">
+<meta property="og:title" content="Galeria do grande ato · Justiça por Camila Regina">
+<meta property="og:description" content="Fotos e vídeos do grande ato de 29/10, na Ponta Verde.">
+<meta property="og:image" content="https://camilaregina-site.github.io/manifestacao/card-ato.png">
+<meta name="theme-color" content="#0d0c0b">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-ribbon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5c-2.2 0-3.9 1.8-3.9 4 0 1.8 1 3.7 2.3 5.8L5.6 21.5h3.3L12 15.6l3.1 5.9h3.3l-4.8-9.2c1.3-2.1 2.3-4 2.3-5.8 0-2.2-1.7-4-3.9-4zm0 2.2c1 0 1.7.8 1.7 1.8 0 1-.7 2.4-1.7 4-1-1.6-1.7-3-1.7-4 0-1 .7-1.8 1.7-1.8z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M18 6 6 18M6 6l12 12"/></symbol>
+</svg>
+
+<header class="hero hero-small">
+  <div class="wrap">
+    <p class="back"><a href="./">← Voltar para a página principal</a></p>
+    <p class="kicker"><svg class="ico ribbon"><use href="#i-ribbon"/></svg> Justiça por Camila Regina</p>
+    <h1>Grande ato<br><em>29 de outubro</em></h1>
+    <p class="sub">No sinal em frente ao Palato e na calçada da Bluefit Ponta Verde, em memória de Camila Regina e por todos os animais.</p>
+    <p class="count-line" id="contagem"></p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section aria-label="Fotos e vídeos">
+    <div id="grid" class="photo-grid big"></div>
+    <p id="vazio" class="empty" hidden>As fotos e vídeos do ato serão publicados aqui em breve.</p>
+
+    <ul class="rules small-print">
+      <li>Imagens do ato, feitas em espaço público por quem participou. Quer pedir a retirada de uma imagem? Fale com a organização no <a data-group href="#" target="_blank" rel="noopener">grupo do WhatsApp</a>.</li>
+      <li>Tem fotos ou vídeos do ato? Envie para a organização pelo mesmo grupo.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg class="ico ribbon" aria-hidden="true"><use href="#i-ribbon"/></svg>
+    <p>Organização: <strong>Justiça por Camila Regina</strong>, um grupo independente de pessoas que defendem os direitos dos animais.</p>
+    <p><a href="./">Página principal</a> · <a href="memorias.html">Memórias de Camila</a></p>
+  </div>
+</footer>
+
+<!-- Visualizador -->
+<div id="lb" class="lb" role="dialog" aria-modal="true" aria-label="Visualizador de fotos e vídeos" hidden>
+  <button class="lb-close" id="lbClose" type="button" aria-label="Fechar"><svg class="ico"><use href="#i-x"/></svg></button>
+  <button class="lb-nav prev" id="lbPrev" type="button" aria-label="Anterior">‹</button>
+  <div class="lb-stage" id="lbStage"></div>
+  <button class="lb-nav next" id="lbNext" type="button" aria-label="Próximo">›</button>
+  <p class="lb-cap" id="lbCap"></p>
+</div>
+
+<script src="config.js"></script>
+<script src="galeria-data.js"></script>
+<script src="galeria.js"></script>
+</body>
+</html>
