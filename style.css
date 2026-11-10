@@ -247,3 +247,24 @@ footer p{max-width:520px;margin:10px auto}
   .js .reveal.in{opacity:1;transform:none}
 }
 @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+
+/* --- atualização: acompanhe, imprensa, histórico, álbuns --- */
+.follow{display:grid;gap:10px;margin-top:14px}
+@media(min-width:720px){.follow{grid-template-columns:repeat(3,1fr)}}
+.follow .btn{justify-content:flex-start;text-align:left}
+.follow .btn span{display:flex;flex-direction:column;line-height:1.25}
+.follow .btn small{font-size:.8rem;opacity:.75;font-weight:400}
+.follow-note{margin:0;color:var(--muted)}
+.prox-levar{margin:14px 0 0;color:var(--muted)}
+.more-tl{margin:10px 0 0}
+.more-tl>summary{cursor:pointer;color:var(--accent);font-weight:600;padding:8px 0}
+.more-tl .timeline{margin-top:10px}
+.news{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.news li{display:flex;gap:14px;align-items:flex-start}
+.news .d{flex:none;min-width:3.2rem;color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
+.news a{font-weight:600}
+.news small{display:block;color:var(--muted);margin-top:2px}
+.foot-links{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center}
+.album{margin:0 0 34px}
+.album h2{margin:0 0 4px}
+.album-desc{margin:0 0 14px;color:var(--muted)}

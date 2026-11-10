@@ -2,8 +2,9 @@
 const $ = (id) => document.getElementById(id);
 document.querySelectorAll("[data-group]").forEach(a => a.href = CONFIG.GRUPO_WHATSAPP);
 
-const ITENS = typeof GALERIA_ATO !== "undefined" ? GALERIA_ATO : [];
-const grid = $("grid"), lb = $("lb"), stage = $("lbStage");
+const ALBUNS = typeof GALERIA_ATOS !== "undefined" ? GALERIA_ATOS : [];
+const ITENS = ALBUNS.flatMap(a => a.itens.map(m => Object.assign({}, m, { _album: a.titulo })));
+const albumBox = $("albuns"), lb = $("lb"), stage = $("lbStage");
 let atual = 0, gatilho = null;
 
 /* ---------- Grade ---------- */
@@ -16,18 +17,28 @@ if (!ITENS.length) {
   if (videos) partes.push(videos + (videos === 1 ? " vídeo" : " vídeos"));
   $("contagem").textContent = partes.join(" · ");
 
-  ITENS.forEach((m, i) => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "tile";
-    b.setAttribute("aria-label", (m.tipo === "video" ? "Abrir vídeo " : "Abrir foto ") + (i + 1) + (m.legenda ? ": " + m.legenda : ""));
-    const src = m.tipo === "video" ? m.poster : (m.thumb || m.src);
-    if (src) { const img = document.createElement("img"); img.src = src; img.alt = m.legenda || ""; img.loading = "lazy"; b.appendChild(img); }
-    if (m.tipo === "video") {
-      const p = document.createElement("span"); p.className = "play";
-      p.innerHTML = '<svg class="ico"><use href="#i-play"/></svg>'; b.appendChild(p);
-    }
-    b.addEventListener("click", () => abrir(i, b));
-    grid.appendChild(b);
+  let n = 0;
+  ALBUNS.forEach(al => {
+    if (!al.itens.length) return;
+    const sec = document.createElement("section"); sec.className = "album";
+    const h = document.createElement("h2"); h.textContent = al.titulo; sec.appendChild(h);
+    if (al.descricao) { const p = document.createElement("p"); p.className = "album-desc"; p.textContent = al.descricao; sec.appendChild(p); }
+    const gr = document.createElement("div"); gr.className = "photo-grid big"; sec.appendChild(gr);
+    al.itens.forEach(m => {
+      const i = n++;
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "tile";
+      b.setAttribute("aria-label", (m.tipo === "video" ? "Abrir vídeo " : "Abrir foto ") + (i + 1) + (m.legenda ? ": " + m.legenda : ""));
+      const src = m.tipo === "video" ? m.poster : (m.thumb || m.src);
+      if (src) { const img = document.createElement("img"); img.src = src; img.alt = m.legenda || ""; img.loading = "lazy"; b.appendChild(img); }
+      if (m.tipo === "video") {
+        const p = document.createElement("span"); p.className = "play";
+        p.innerHTML = '<svg class="ico"><use href="#i-play"/></svg>'; b.appendChild(p);
+      }
+      b.addEventListener("click", () => abrir(i, b));
+      gr.appendChild(b);
+    });
+    albumBox.appendChild(sec);
   });
 }
 
@@ -45,7 +56,7 @@ function mostrar() {
     el = document.createElement("img"); el.src = m.src; el.alt = m.legenda || "Foto do grande ato";
   }
   stage.appendChild(el);
-  const cap = [m.legenda, m.autor ? (m.tipo === "video" ? "Vídeo: " : "Foto: ") + m.autor : ""].filter(Boolean).join(" · ");
+  const cap = [m._album, m.legenda, m.autor ? (m.tipo === "video" ? "Vídeo: " : "Foto: ") + m.autor : ""].filter(Boolean).join(" · ");
   $("lbCap").textContent = (cap ? cap + "  ·  " : "") + (atual + 1) + " / " + ITENS.length;
   const varios = ITENS.length > 1;
   $("lbPrev").hidden = $("lbNext").hidden = !varios;

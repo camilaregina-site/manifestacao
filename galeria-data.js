@@ -1,13 +1,8 @@
-/* ============ GALERIA DO GRANDE ATO (29/10) ============
-   Para adicionar uma foto ou vídeo:
-   1) coloque o arquivo na pasta "ato/" do repositório;
-   2) acrescente uma linha na lista abaixo (a ordem daqui é a ordem na página).
-
-   Foto:   { tipo: "foto",  src: "ato/01.jpg", thumb: "ato/01-t.jpg", legenda: "", autor: "" },
-   Vídeo:  { tipo: "video", src: "ato/video-01.mp4", poster: "ato/video-01.jpg", legenda: "", autor: "" },
-
-   - thumb (miniatura), poster (capa do vídeo), legenda e autor são opcionais.
-   - Só vídeos .mp4. Cada arquivo precisa ter menos de 100 MB (o ideal é menos de 25 MB).
-   ========================================================= */
-const GALERIA_ATO = [
+/* Galeria dos atos: edite só aqui. Cada ato é um álbum com sua lista de itens.
+   foto:  { tipo: "foto",  src: "fotos/26-01.jpg", thumb: "fotos/26-01-p.jpg", legenda: "", autor: "" }
+   vídeo: { tipo: "video", src: "videos/26-01.mp4", poster: "fotos/26-01-v.jpg", legenda: "", autor: "" }
+   Vídeos: só .mp4 com menos de 100 MB. */
+const GALERIA_ATOS = [
+  { id: "29-10", titulo: "Grande ato · 29 de outubro", descricao: "No sinal em frente ao Palato e na calçada da Bluefit Ponta Verde.", itens: [ ] },
+  { id: "26-10", titulo: "Primeiro ato · 26 de outubro", descricao: "Em frente à academia.", itens: [ ] }
 ];

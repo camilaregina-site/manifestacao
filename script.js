@@ -2,6 +2,32 @@ const $ = (id) => document.getElementById(id);
 
 document.querySelectorAll("[data-group]").forEach(a => a.href = CONFIG.GRUPO_WHATSAPP);
 
+// Links configuráveis: esconde se estiver vazio
+document.querySelectorAll("[data-link]").forEach(a => {
+  const url = CONFIG[a.dataset.link];
+  if (url && /^https:\/\//.test(url)) a.href = url; else a.hidden = true;
+});
+
+// Próximo grande ato
+(function () {
+  const p = typeof CONFIG.PROXIMO_ATO === "object" ? CONFIG.PROXIMO_ATO : null;
+  if (!p || !p.quando) return;
+  $("proxQuando").textContent = p.quando;
+  const ul = $("proxRota");
+  (p.pontos || []).forEach(pt => {
+    const li = document.createElement("li");
+    const d = document.createElement("div");
+    const st = document.createElement("strong"); st.textContent = pt.titulo || "";
+    d.appendChild(st);
+    if (pt.detalhe) { const sm = document.createElement("small"); sm.textContent = pt.detalhe; d.appendChild(sm); }
+    if (pt.mapa && /^https:\/\//.test(pt.mapa)) { const a = document.createElement("a"); a.href = pt.mapa; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Ver no mapa"; d.appendChild(a); }
+    li.appendChild(d); ul.appendChild(li);
+  });
+  if (p.levar) $("proxLevar").textContent = p.levar; else $("proxLevar").hidden = true;
+  $("proximo").hidden = false; $("chipProx").hidden = false;
+  $("semProximo").hidden = true; $("comProximo").hidden = false;
+})();
+
 // Compartilhar
 const pageUrl = location.href.split("#")[0];
 $("waShare").href = "https://wa.me/?text=" + encodeURIComponent(CONFIG.TEXTO_COMPARTILHAR + " " + pageUrl);
@@ -20,7 +46,7 @@ document.querySelectorAll(".reveal").forEach(el => io ? io.observe(el) : el.clas
 
 // Prévia da galeria do ato (até 6 itens)
 (function () {
-  const itens = typeof GALERIA_ATO !== "undefined" ? GALERIA_ATO : [];
+  const itens = typeof GALERIA_ATOS !== "undefined" ? GALERIA_ATOS.flatMap(a => a.itens) : [];
   if (!itens.length) return;
   const box = $("atoPreview");
   const MAX = 6;
