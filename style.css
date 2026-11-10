@@ -268,3 +268,6 @@ footer p{max-width:520px;margin:10px auto}
 .album{margin:0 0 34px}
 .album h2{margin:0 0 4px}
 .album-desc{margin:0 0 14px;color:var(--muted)}
+
+.others{border-color:rgba(226,167,92,.35)}
+.others h2{margin-top:0}
