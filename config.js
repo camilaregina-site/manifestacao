@@ -17,15 +17,14 @@ const CONFIG = {
   //   levar: "Roupa preta, água e cartazes respeitosos."
   // },
   PROXIMO_ATO: {
-    quando: "Quinta-feira, 12 de novembro, às 18h",
-    pontos: [
-      { titulo: "Em frente à Bluefit Ponta Verde", detalhe: "Ato pela justiça: por Camila Regina, por todos os animais de Maceió e para que todos os envolvidos sejam responsabilizados.", mapa: "https://www.google.com/maps/search/?api=1&query=Bluefit+Ponta+Verde+Macei%C3%B3" }
-    ],
-    levar: "Ato pacífico. Leve água e cartazes com respeito, focados em Camila e nos direitos dos animais."
+    quando: "Ato remarcado: nova data em breve",
+    pontos: [],
+    levar: "O ato previsto para quinta-feira (12/11) será remarcado. A nova data e o local serão divulgados aqui, no Instagram, no canal e no grupo do WhatsApp."
   },
 
+
   // Texto que acompanha o link no botão "Enviar no WhatsApp"
-  TEXTO_COMPARTILHAR: "Justiça por Camila Regina: novo ato dia 12/11 (quinta), às 18h, em frente à Bluefit Ponta Verde, em Maceió. Veja as fotos dos atos e ajude o Reginaldo a encontrar um lar.",
+  TEXTO_COMPARTILHAR: "Justiça por Camila Regina: ato pelos direitos dos animais em Maceió. Novo ato será remarcado; acompanhe a data no site. Veja as fotos dos atos e ajude o Reginaldo a encontrar um lar.",
 
   // Texto do botão "Divulgar o Reginaldo"
   TEXTO_REGINALDO: "Reginaldo, gato manso e carinhoso da Ponta Verde (Maceió), precisa de um lar: adoção responsável ou lar temporário. Castração garantida, se necessário. Saiba mais:"
